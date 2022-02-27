@@ -45,11 +45,7 @@ class Adapter(
         holder.setMinMax(item.min, item.max)
         holder.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-
                 holder.right.text = progress.toString()
-                Log.d("DIFF", "onProgressChanged: diff ${abs(seekBar!!.max - progress)} ")
-                Log.d("TAG", "onProgressChanged: ${progress}")
-
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -57,12 +53,6 @@ class Adapter(
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                Log.d(
-                    "MIN AND MAX POS",
-                    "onStopTrackingTouch: ${seekBar?.min} ${seekBar?.progress}"
-                )
-                Log.d("POSITION", "onStopTrackingTouch: ${holder.adapterPosition}")
-//                Log.d("CURR POS", "onStopTrackingTouch: ${seekBar?.max}")
                 if (seekBar?.min == seekBar?.progress) {
                     if (holder.adapterPosition != 0) {
                         deleteElement(holder.adapterPosition)
